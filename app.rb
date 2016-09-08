@@ -40,7 +40,7 @@ post '/transcription' do
     :recording => recording
   })
   Pony.mail(:to => EMAIL,
-            :from => "no-reply@#{request.host}",
+            :from => "no-reply@#{ENV['MAILGUN_DOMAIN'] || request.host}",
             :subject => "New Phone Call from #{params[:From]}",
             :body => email_body,
             :via => :smtp,
