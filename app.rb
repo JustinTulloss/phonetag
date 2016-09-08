@@ -9,7 +9,6 @@ TWILIO_TOKEN = ENV['PHONETAG_TWILIO_TOKEN']
 
 twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_TOKEN
 
-
 get '/' do
   'Welcome to phone tag'
 end
@@ -40,9 +39,17 @@ post '/transcription' do
     :from => params[:From],
     :recording => recording
   })
-  Pony.mail :to => EMAIL,
+  Pony.mail(:to => EMAIL,
             :from => "no-reply@#{request.host}",
             :subject => "New Phone Call from #{params[:From]}",
-            :body => email_body
+            :body => email_body,
+            :via => :smtp,
+            :via_options => {
+              :address        => ENV['MAILGUN_SMTP_SERVER'] || 'localhost',
+              :port           => ENV['MAILGUN_SMTP_PORT'] || '25',
+              :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+              :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+              :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+            })
   status 201
 end
