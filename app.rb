@@ -32,7 +32,7 @@ end
 post '/transcription' do
   recording = twilio_client.recordings.get(params['RecordingSid'])
   full_text = recording.transcriptions.list().reduce('') do |text, transcription|
-    text += transcription.transcription_text
+    text += transcription.transcription_text || ''
   end
   email_body = erb(:email, :locals => {
     :text => full_text,
