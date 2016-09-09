@@ -10,7 +10,7 @@ TWILIO_TOKEN = ENV['PHONETAG_TWILIO_TOKEN']
 twilio_client = Twilio::REST::Client.new TWILIO_SID, TWILIO_TOKEN
 
 get '/' do
-  'Welcome to phone tag'
+  'Welcome to Phonetag'
 end
 
 post '/call' do
@@ -26,7 +26,7 @@ end
 
 post '/recording' do
   logger.info "Got a new recording, listen at #{params['RecordingUrl']}.mp3"
-  status 201
+  status 204
 end
 
 post '/transcription' do
@@ -51,5 +51,5 @@ post '/transcription' do
               :password       => ENV['MAILGUN_SMTP_PASSWORD'],
               :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
             })
-  status 201
+  status 204
 end
