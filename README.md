@@ -9,7 +9,7 @@ just email you when somebody has left a message.
 The recommended way to use Phonetag is to deploy an instance on Heroku.
 
 1. Create a [Twilio][3] account. A trial account is enough for this.
-1. Deploy to Heroku.
+1. [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)][5]
 1. Add your email address to the sandbox of your [Mailgun account][4] (otherwise it won't send emails to that address).
 1. [Create a phone number on Twilio][1]
 1. For the voice section of the Twilio number, set the incoming webhook to POST to /call on your new Heroku instance. ![twilio configuration][2]
@@ -20,3 +20,4 @@ The recommended way to use Phonetag is to deploy an instance on Heroku.
 [2]: https://dl.dropbox.com/s/ezoym1ltutn6sar/Screenshot%202016-09-09%2010.50.01.png
 [3]: https://www.twilio.com/
 [4]: https://mailgun.com/app/testing/recipients
+[5]: https://heroku.com/deploy
