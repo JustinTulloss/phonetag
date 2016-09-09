@@ -1,0 +1,21 @@
+{
+  "name": "Phonetag",
+  "description": "A simple voice mailbox",
+  "repository": "https://github.com/JustinTulloss/phonetag",
+  "env": {
+    "PHONETAG_EMAIL": {
+      "description": "All transcripts and links to voice recordings will be sent to this email"
+    },
+    "PHONETAG_TWILIO_SID": {
+      "description": "The SID of a Twilio account. Find it at https://www.twilio.com/console"
+    },
+    "PHONETAG_TWILIO_TOKEN": {
+      "description": "The API for the SID provided. Find it at https://www.twilio.com/console"
+    },
+    "PHONETAG_GREETING": {
+      "description": "The greeting that will be read to people who call the number",
+      "required": false
+    }
+  },
+  "addons": [ "mailgun:starter" ]
+}
